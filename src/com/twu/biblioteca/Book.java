@@ -5,6 +5,7 @@ import lombok.*;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Book {
 
     @Getter @Setter
@@ -13,5 +14,8 @@ public class Book {
     private String author;
     @Getter
     private int year;
-
+    @Getter
+    private int id;
+    @Getter @Setter
+    private boolean checkedOut;
 }

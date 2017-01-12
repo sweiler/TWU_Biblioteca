@@ -20,7 +20,15 @@ public class BooksControllerTest {
     }
 
     @Test
-    public void shouldGetListOfBooks(){
-        assertThat(booksController.listBooks(),is(Arrays.asList(new Book("ABC", "Simon", 2017), new Book("DEF","Nana",2017))));
+    public void shouldGetListOfAvailableBooks(){
+        assertThat(booksController.listAvailableBooks(),is(Arrays.asList(
+                new Book("ABC", "Simon", 2017,1,false),
+                new Book("DEF","Nana",2017,2,false))));
+    }
+
+    @Test
+    public void shouldCheckoutABook() {
+        booksController.checkoutBook(1);
+        assertThat(booksController.listAvailableBooks(),is(Arrays.asList(new Book("DEF","Nana",2017,2,false))));
     }
 }
