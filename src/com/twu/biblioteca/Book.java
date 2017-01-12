@@ -1,21 +1,17 @@
 package com.twu.biblioteca;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.*;
 
 @EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 public class Book {
 
-    @Getter
+    @Getter @Setter
     private String title;
-
-    public Book() {
-
-    }
-
-    public Book(String title) {
-        this.title = title;
-    }
-
+    @Getter
+    private String author;
+    @Getter
+    private int year;
 
 }
