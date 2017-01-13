@@ -29,13 +29,13 @@ public class BibliotecaApp {
             }
         });
 
-        mainMenu.addOption("List Books", new Runnable() {
+        mainMenu.addOption("List Book", new Runnable() {
             @Override
             public void run() {
                 booksController.getAllBooksWithDetails();
             }
         });
-        mainMenu.addOption("List Movies", new Runnable() {
+        mainMenu.addOption("List Book", new Runnable() {
             @Override
             public void run() {
                 moviesController.getAllMoviesWithDetails();

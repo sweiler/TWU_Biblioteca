@@ -6,7 +6,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Movies {
+public class Book {
 
     @Getter @Setter
     private String title;

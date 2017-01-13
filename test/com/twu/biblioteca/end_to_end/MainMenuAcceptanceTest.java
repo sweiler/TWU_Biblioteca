@@ -19,7 +19,7 @@ public class MainMenuAcceptanceTest extends BaseAcceptanceTest {
     @Test
     public void shouldShowMainMenuOptions() {
         app.run();
-        assertThat(advancedPrintStream.getContents(), containsString("1: List Books"));
+        assertThat(advancedPrintStream.getContents(), containsString("1: List Book"));
     }
 
     @Test

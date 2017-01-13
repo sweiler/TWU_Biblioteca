@@ -10,17 +10,17 @@ public class BooksController {
 
     PrintStream printStream;
 
-    private final Map<Integer, Movies> books = new HashMap<>();
+    private final Map<Integer, Book> books = new HashMap<>();
 
     public BooksController(PrintStream printStream) {
         this.printStream = printStream;
-        books.put(1, new Movies("ABC", "Simon", 2017, 1, false));
-        books.put(2, new Movies("DEF", "Nana", 2017, 2, false));
+        books.put(1, new Book("ABC", "Simon", 2017, 1, false));
+        books.put(2, new Book("DEF", "Nana", 2017, 2, false));
     }
 
-    public List<Movies> listAvailableBooks() {
-        List<Movies> books = new ArrayList<>();
-        for (Movies book : this.books.values()) {
+    public List<Book> listAvailableBooks() {
+        List<Book> books = new ArrayList<>();
+        for (Book book : this.books.values()) {
             if (!book.isCheckedOut()) {
                 books.add(book);
             }
@@ -30,7 +30,7 @@ public class BooksController {
 
     public void getAllBooksWithDetails() {
         StringBuffer buffer = new StringBuffer();
-        for (Movies book : books.values()) {
+        for (Book book : books.values()) {
             buffer.append(book.getTitle());
             buffer.append(" | ");
             buffer.append(book.getAuthor());
@@ -42,7 +42,7 @@ public class BooksController {
     }
 
     public void checkoutBook(int bookID) {
-        Movies book = books.get(bookID);
+        Book book = books.get(bookID);
 
         if (book.isCheckedOut()) {
             printStream.println("That book is not available.");
@@ -53,7 +53,7 @@ public class BooksController {
     }
 
     public void returnBook(int bookID) {
-        Movies book = books.get(bookID);
+        Book book = books.get(bookID);
         if (book.isCheckedOut()) {
             book.setCheckedOut(false);
             printStream.println("Thank You for returning the book.");
