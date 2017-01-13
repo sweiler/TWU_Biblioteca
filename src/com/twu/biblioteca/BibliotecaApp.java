@@ -20,6 +20,7 @@ public class BibliotecaApp {
 
         MainMenu mainMenu = new MainMenu(inputStream, printStream);
         final BooksController booksController = new BooksController(printStream);
+        final MoviesController moviesController = new MoviesController(printStream);
 
         mainMenu.addOption("Quit", new Runnable() {
             @Override
@@ -32,6 +33,12 @@ public class BibliotecaApp {
             @Override
             public void run() {
                 booksController.getAllBooksWithDetails();
+            }
+        });
+        mainMenu.addOption("List Movies", new Runnable() {
+            @Override
+            public void run() {
+                moviesController.getAllMoviesWithDetails();
             }
         });
 

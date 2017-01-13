@@ -23,14 +23,14 @@ public class BooksControllerTest {
     @Test
     public void shouldGetListOfAvailableBooks(){
         assertThat(booksController.listAvailableBooks(),is(Arrays.asList(
-                new Book("ABC", "Simon", 2017,1,false),
-                new Book("DEF","Nana",2017,2,false))));
+                new Movies("ABC", "Simon", 2017,1,false),
+                new Movies("DEF","Nana",2017,2,false))));
     }
 
     @Test
     public void shouldCheckoutABook() {
         booksController.checkoutBook(1);
-        assertThat(booksController.listAvailableBooks(),is(Arrays.asList(new Book("DEF","Nana",2017,2,false))));
+        assertThat(booksController.listAvailableBooks(),is(Arrays.asList(new Movies("DEF","Nana",2017,2,false))));
     }
 
     @Test
@@ -50,8 +50,8 @@ public class BooksControllerTest {
     public void shouldReturnABook() {
         booksController.checkoutBook(1);
         booksController.returnBook(1);
-        assertThat(booksController.listAvailableBooks(),is(Arrays.asList(new Book("ABC", "Simon", 2017,1,false),
-                new Book("DEF","Nana",2017,2,false))));
+        assertThat(booksController.listAvailableBooks(),is(Arrays.asList(new Movies("ABC", "Simon", 2017,1,false),
+                new Movies("DEF","Nana",2017,2,false))));
     }
 
     @Test
