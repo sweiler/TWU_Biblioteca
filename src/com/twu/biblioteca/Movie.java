@@ -1,24 +1,25 @@
 package com.twu.biblioteca;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @AllArgsConstructor
+@RequiredArgsConstructor
 @EqualsAndHashCode
 @ToString
 public class Movie {
 
-    @Getter
+    @Getter @NonNull
     private String movieName;
 
-    @Getter
+    @Getter @NonNull
     private int year;
 
-    @Getter
+    @Getter @NonNull
     private String directorName;
 
-    @Getter
+    @Getter @NonNull
     private MovieRating movieRating;
+
+    @Getter @Setter
+    private boolean checkedOut = false;
 }

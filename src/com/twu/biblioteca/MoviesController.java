@@ -23,7 +23,9 @@ public class MoviesController {
     public List<Movie> listAvailableMovies() {
         List<Movie> movies = new ArrayList<>();
         for (Movie movie : this.movies.values()) {
-            movies.add(movie);
+            if (!movie.isCheckedOut()) {
+                movies.add(movie);
+            }
         }
 
         return movies;
@@ -42,5 +44,16 @@ public class MoviesController {
             buffer.append("\n");
         }
         printStream.print(buffer.toString());
+    }
+
+    public void checkoutMovie(int movieId) {
+        Movie movie = movies.get(movieId);
+
+        if (movie.isCheckedOut()) {
+            printStream.println("That movie is not available.");
+        } else {
+            movie.setCheckedOut(true);
+            printStream.println("Thank you! Enjoy the movie.");
+        }
     }
 }

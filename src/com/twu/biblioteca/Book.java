@@ -8,14 +8,21 @@ import lombok.*;
 @ToString
 public class Book {
 
-    @Getter @Setter
+    @Getter
+    @Setter
     private String title;
+
     @Getter
     private String author;
+
     @Getter
     private int year;
+
     @Getter
     private int id;
-    @Getter @Setter
+
+    @Getter
+    @Setter
     private boolean checkedOut;
+
 }
