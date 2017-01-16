@@ -5,7 +5,9 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -43,7 +45,7 @@ public class MainMenuTest {
 
         mainMenu.runMainMenu();
 
-        assertThat(advancedPrintStream.getContents(), is("0: Option A\n1: Option B\n"));
+        assertThat(advancedPrintStream.getContents(), containsString("0: Option A\n1: Option B\n"));
 
     }
 
@@ -66,7 +68,7 @@ public class MainMenuTest {
 
     private void simulateInput(String input) {
         mainMenu = new MainMenu(
-                new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8)),
+                new Scanner(new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8))),
                 advancedPrintStream.getPrintStream());
     }
 

@@ -17,9 +17,9 @@ public class BibliotecaApp {
 
     public void run() {
         printStream.println("Welcome to Biblioteca");
-
-        MainMenu mainMenu = new MainMenu(inputStream, printStream);
-        final BooksController booksController = new BooksController(printStream);
+        Scanner scanner = new Scanner(inputStream);
+        MainMenu mainMenu = new MainMenu(scanner, printStream);
+        final BooksController booksController = new BooksController(scanner, printStream);
         final MoviesController moviesController = new MoviesController(printStream);
 
         mainMenu.addOption("Quit", new Runnable() {
@@ -35,13 +35,21 @@ public class BibliotecaApp {
                 booksController.getAllBooksWithDetails();
             }
         });
-        mainMenu.addOption("List Book", new Runnable() {
+        mainMenu.addOption("List Movies", new Runnable() {
             @Override
             public void run() {
                 moviesController.getAllMoviesWithDetails();
             }
         });
+        mainMenu.addOption("Checkout Book", new Runnable() {
+            @Override
+            public void run() {
+                booksController.handleCheckoutBook();
+            }
+        });
 
         mainMenu.runMainMenu();
+
+        scanner.close();
     }
 }

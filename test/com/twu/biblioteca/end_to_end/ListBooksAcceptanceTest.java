@@ -18,6 +18,6 @@ public class ListBooksAcceptanceTest extends BaseAcceptanceTest {
     public void shouldListBooksWithDetailsInTheLibrary() {
         provideInput("1\n0\n");
         app.run();
-        assertThat(advancedPrintStream.getContents(), containsString("ABC | Simon | 2017\nDEF | Nana | 2017\n"));
+        assertThat(advancedPrintStream.getContents(), containsString("1 | ABC | Simon | 2017\n2 | DEF | Nana | 2017\n"));
     }
 }

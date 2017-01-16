@@ -1,18 +1,18 @@
 package com.twu.biblioteca;
 
+import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BooksController {
 
+    private Scanner scanner;
     PrintStream printStream;
 
     private final Map<Integer, Book> books = new HashMap<>();
 
-    public BooksController(PrintStream printStream) {
+    public BooksController(Scanner scanner, PrintStream printStream) {
+        this.scanner = scanner;
         this.printStream = printStream;
         books.put(1, new Book("ABC", "Simon", 2017, 1, false));
         books.put(2, new Book("DEF", "Nana", 2017, 2, false));
@@ -30,7 +30,9 @@ public class BooksController {
 
     public void getAllBooksWithDetails() {
         StringBuffer buffer = new StringBuffer();
-        for (Book book : books.values()) {
+        for (Book book : listAvailableBooks()) {
+            buffer.append(book.getId());
+            buffer.append(" | ");
             buffer.append(book.getTitle());
             buffer.append(" | ");
             buffer.append(book.getAuthor());
@@ -60,5 +62,12 @@ public class BooksController {
         } else {
             printStream.println("That is not a valid book to return.");
         }
+    }
+
+    public void handleCheckoutBook() {
+        printStream.println("Which book id do you want to checkout?");
+
+
+        checkoutBook(scanner.nextInt());
     }
 }

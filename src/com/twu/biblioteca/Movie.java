@@ -8,6 +8,9 @@ import lombok.*;
 @ToString
 public class Movie {
 
+    @Getter
+    private int Id;
+
     @Getter @NonNull
     private String movieName;
 

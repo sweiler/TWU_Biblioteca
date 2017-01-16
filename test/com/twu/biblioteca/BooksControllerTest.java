@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.Is.is;
@@ -17,7 +18,7 @@ public class BooksControllerTest {
     @Before
     public void setUp(){
         advancedPrintStream = new AdvancedPrintStream();
-        booksController = new BooksController(advancedPrintStream.getPrintStream());
+        booksController = new BooksController(new Scanner(System.in), advancedPrintStream.getPrintStream());
     }
 
     @Test
@@ -67,4 +68,5 @@ public class BooksControllerTest {
         booksController.returnBook(2);
         assertThat(advancedPrintStream.getContents(), containsString("That is not a valid book to return.\n"));
     }
+
 }

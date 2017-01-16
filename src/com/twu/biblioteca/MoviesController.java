@@ -34,6 +34,8 @@ public class MoviesController {
     public void getAllMoviesWithDetails() {
         StringBuffer buffer = new StringBuffer();
         for (Movie movie : movies.values()) {
+            buffer.append(movie.getId());
+            buffer.append(" | ");
             buffer.append(movie.getMovieName());
             buffer.append(" | ");
             buffer.append(movie.getYear());

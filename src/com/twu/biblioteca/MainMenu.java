@@ -12,17 +12,17 @@ import java.util.Scanner;
 @NoArgsConstructor
 public class MainMenu {
 
-    private InputStream inputStream;
+
+    private Scanner scanner;
     private PrintStream printStream;
     private List<MainMenuOption> mainMenuOptions = new ArrayList<>();
-    private Scanner scanner;
 
 
-    public MainMenu(InputStream inputStream, PrintStream printStream) {
 
-        this.inputStream = inputStream;
+    public MainMenu(Scanner scanner, PrintStream printStream) {
+        this.scanner = scanner;
+
         this.printStream = printStream;
-        scanner = new Scanner(this.inputStream);
     }
 
     public void addOption(String name, Runnable runnable) {
@@ -52,12 +52,15 @@ public class MainMenu {
     }
 
     private void printOptionsMenu() {
+        printStream.println("===============");
         for (int i = 0; i < mainMenuOptions.size(); i++) {
             printStream.println(i + ": " + mainMenuOptions.get(i).optionName);
         }
+        printStream.println("===============");
     }
 
     private int getUserInput() {
+
         return scanner.nextInt();
     }
 
