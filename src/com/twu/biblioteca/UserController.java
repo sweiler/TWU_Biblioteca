@@ -20,8 +20,8 @@ public class UserController {
     public UserController(Scanner scanner, PrintStream printStream) {
         this.printStream = printStream;
         this.scanner = scanner;
-        users.put("123-4567", new User("123-4567", "secret"));
-        users.put("123-1234", new User("123-1234", "pass"));
+        users.put("123-4567", new User("123-4567", "secret", "Shahid", "something@twu.com", "+92 123 123123"));
+        users.put("123-1234", new User("123-1234", "pass", "Peter", "peter@somewhere.com", "+49 120 021"));
     }
 
     public User userLogin(String libraryNumber, String password) {
@@ -51,5 +51,15 @@ public class UserController {
                 doLogIn();
             }
         }
+    }
+
+    public String getUserInformationString() {
+
+        return "";
+    }
+
+    public void showUserInformation() {
+        doLogIn();
+        printStream.println(loggedInUser.toString());
     }
 }

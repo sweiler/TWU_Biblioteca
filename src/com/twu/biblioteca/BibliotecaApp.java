@@ -48,6 +48,12 @@ public class BibliotecaApp {
                 booksController.handleCheckoutBook();
             }
         });
+        mainMenu.addOption("Show User Information", new Runnable() {
+            @Override
+            public void run() {
+                userController.showUserInformation();
+            }
+        });
 
         mainMenu.runMainMenu();
 
