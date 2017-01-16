@@ -18,7 +18,8 @@ public class BooksControllerTest {
     @Before
     public void setUp(){
         advancedPrintStream = new AdvancedPrintStream();
-        booksController = new BooksController(new Scanner(System.in), advancedPrintStream.getPrintStream());
+        UserController userController = new UserController(new Scanner(System.in), advancedPrintStream.getPrintStream());
+        booksController = new BooksController(new Scanner(System.in), advancedPrintStream.getPrintStream(), userController);
     }
 
     @Test

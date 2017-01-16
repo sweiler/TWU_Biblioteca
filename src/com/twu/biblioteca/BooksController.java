@@ -10,10 +10,12 @@ public class BooksController {
     PrintStream printStream;
 
     private final Map<Integer, Book> books = new HashMap<>();
+    private UserController userController;
 
-    public BooksController(Scanner scanner, PrintStream printStream) {
+    public BooksController(Scanner scanner, PrintStream printStream, UserController userController) {
         this.scanner = scanner;
         this.printStream = printStream;
+        this.userController = userController;
         books.put(1, new Book("ABC", "Simon", 2017, 1, false));
         books.put(2, new Book("DEF", "Nana", 2017, 2, false));
     }
@@ -65,9 +67,9 @@ public class BooksController {
     }
 
     public void handleCheckoutBook() {
+        userController.doLogIn();
         printStream.println("Which book id do you want to checkout?");
-
-
         checkoutBook(scanner.nextInt());
     }
+
 }

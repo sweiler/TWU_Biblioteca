@@ -16,10 +16,11 @@ public class BookCheckoutAcceptanceTest extends BaseAcceptanceTest {
 
     @Test
     public void shouldAllowCheckoutOfBooks() {
-        provideInput("3\n1\n1\n0\n");
+        provideInput("3\n123-4567\nsecret\n1\n1\n0\n");
 
         app.run();
 
+        assertThat(advancedPrintStream.getContents(), containsString("Please login."));
         assertThat(advancedPrintStream.getContents(), containsString("Which book id do you want to checkout?"));
         assertThat(advancedPrintStream.getContents(), containsString("Thank you! Enjoy the book."));
         assertThat(advancedPrintStream.getContents(), not(containsString("1 | ABC | Simon | 2017")));

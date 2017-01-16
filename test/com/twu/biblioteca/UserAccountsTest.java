@@ -3,7 +3,11 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Scanner;
+
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class UserAccountsTest {
@@ -12,17 +16,17 @@ public class UserAccountsTest {
 
     @Before
     public void setUp() {
-        userController = new UserController();
+        userController = new UserController(new Scanner(System.in), System.out);
     }
 
     @Test
     public void userLogin() {
-        assertThat(userController.userLogin("123-4567", "secret"), is(true));
+        assertThat(userController.userLogin("123-4567", "secret"), is(notNullValue()));
     }
 
     @Test
     public void userLoginFail() {
-        assertThat(userController.userLogin("123-4567", "secret1"), is(false));
+        assertThat(userController.userLogin("123-4567", "secret1"), is(nullValue()));
     }
 
 

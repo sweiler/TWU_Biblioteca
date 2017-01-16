@@ -19,7 +19,8 @@ public class BibliotecaApp {
         printStream.println("Welcome to Biblioteca");
         Scanner scanner = new Scanner(inputStream);
         MainMenu mainMenu = new MainMenu(scanner, printStream);
-        final BooksController booksController = new BooksController(scanner, printStream);
+        final UserController userController = new UserController(scanner, printStream);
+        final BooksController booksController = new BooksController(scanner, printStream, userController);
         final MoviesController moviesController = new MoviesController(printStream);
 
         mainMenu.addOption("Quit", new Runnable() {
